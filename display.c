@@ -11,7 +11,6 @@ void printBoard(const GameState *gs)
     printf("\n");
 
     for (r = 0; r <= ROWS; r++) {
-        /* Dot row */
         printf("%d ", r);
         for (c = 0; c <= COLS; c++) {
             printf(".");
@@ -24,7 +23,6 @@ void printBoard(const GameState *gs)
         }
         printf("\n");
 
-        /* Interior row */
         if (r < ROWS) {
             printf("  ");
             for (c = 0; c <= COLS; c++) {

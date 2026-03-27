@@ -20,14 +20,14 @@ int applyMove(GameState *gs, int r1, int c1, int r2, int c2)
         tmp = c1; c1 = c2; c2 = tmp;
     }
 
+    /* Horizontal edge */
     if (r1 == r2 && c2 == c1 + 1) {
         int boxRow = r1;
         int boxCol = c1;
         int drawn = 0;
 
         if (boxRow < ROWS) {
-            if (!gs->edges.top[boxRow][boxCol]) {
-                gs->edges.top[boxRow][boxCol] = 1;
+            if (!gs->edges.top[boxRow][boxCol])                 gs->edges.top[boxRow][boxCol] = 1;
                 drawn = 1;
             }
         }
@@ -40,6 +40,7 @@ int applyMove(GameState *gs, int r1, int c1, int r2, int c2)
         return drawn;
     }
 
+    /* Vertical edge */
     if (c1 == c2 && r2 == r1 + 1) {
         int boxRow = r1;
         int boxCol = c1;
