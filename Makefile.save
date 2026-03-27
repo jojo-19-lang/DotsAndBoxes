@@ -1,6 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Werror -g -c
-LFLAGS = -o
+CFLAGS = -Wall -Werror -g -cLFLAGS = -o
 
 SOURCES = main.c logic.c display.c input.c
 OBJECTS = $(SOURCES:.c=.o)
