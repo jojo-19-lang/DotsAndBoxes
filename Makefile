@@ -13,6 +13,8 @@ $(OUTPUT): $(OBJECTS)
 
 %.o: %.c game.h
 	$(CC) $(CFLAGS) $<
+run: $(OUTPUT)
+	./$(OUTPUT)
 
 valgrind: $(OUTPUT)
 	valgrind --leak-check=full --track-origins=yes ./$(OUTPUT)
@@ -20,4 +22,4 @@ valgrind: $(OUTPUT)
 clean:
 	rm -f $(OBJECTS) $(OUTPUT)
 
-.PHONY: all clean valgrind
+.PHONY: all clean valgrind run
