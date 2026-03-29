@@ -1,4 +1,4 @@
-# Dots and Boxes – CMPS 270 Sprint 1
+# Dots and Boxes – CMPS 241 Sprint 1
 
 This is a two-player console game written in C.
 
