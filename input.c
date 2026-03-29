@@ -8,5 +8,6 @@ int getMove(int *r1, int *c1, int *r2, int *c2, char player)
         while ((ch = getchar()) != '\n' && ch != EOF);
         return 0;
     }
-    return 1;
+ 
+   return 1;
 }
