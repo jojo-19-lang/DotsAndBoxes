@@ -4,6 +4,14 @@
 #define ROWS 4
 #define COLS 5
 
+#define MAX_MOVES ((ROWS+1)*COLS + ROWS*(COLS+1))
+
+
+typedef enum {
+    MODE_TWO_PLAYER = 0,
+    MODE_BOT        = 1
+} GameMode;
+
 typedef struct {
     int top   [ROWS][COLS];
     int bottom[ROWS][COLS];

@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -g -c
 LFLAGS = -o
 
-SOURCES = main.c logic.c display.c input.c
+SOURCES = main.c logic.c display.c input.c bot.c
 OBJECTS = $(SOURCES:.c=.o)
 OUTPUT = dots_and_boxes
 
@@ -12,7 +12,8 @@ $(OUTPUT): $(OBJECTS)
 	$(CC) $(LFLAGS) $@ $^
 
 %.o: %.c game.h
-	$(CC) $(CFLAGS) $<
+	$(CC) $(CFLAGS) $< -o $@
+
 run: $(OUTPUT)
 	./$(OUTPUT)
 
