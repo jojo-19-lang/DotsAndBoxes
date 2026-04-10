@@ -20,7 +20,7 @@ If you complete a box, it’s yours and you get to play again.
 The player with the most boxes at the end wins.
 
 ## Bot Strategy (Sprint 2)
-The bot uses a simple rule-based greedy strategy. It checks all possible moves and first tries to find a move that completes a box. If no such move exists, it avoids moves that would allow the opponent to complete a box on their next turn and randomly chooses from the remaining safe moves. If no safe moves are available, it selects any valid move at random. 
+The bot uses a simple rule-based greedy strategy. It checks all possible moves and first tries to find a move that completes a box. If no such move exists, it avoids moves that would allow the opponent to complete a box on their next turn and randomly chooses from the remaining safe moves. If no safe moves are available, it selects any valid move at random. The bot uses a one-step lookahead heuristic and basic safety filtering to avoid giving immediate scoring opportunities to the opponent. 
 
 ## Files
 main.c — game loop and mode selection
