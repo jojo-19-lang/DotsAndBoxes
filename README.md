@@ -20,7 +20,7 @@ If you complete a box, it’s yours and you get to play again.
 The player with the most boxes at the end wins.
 
 ## Bot Strategy (Sprint 2)
-The bot uses a simple rule-based greedy strategy. It checks all possible moves and first tries to find a move that completes a box. If no such move exists, it avoids moves that would allow the opponent to complete a box on their next turn and randomly chooses from the remaining safe moves. If no safe moves are available, it selects any valid move at random. The bot uses a one-step lookahead heuristic and basic safety filtering to avoid giving immediate scoring opportunities to the opponent. 
+This bot implements a strategically informed AI for Dots and Boxes using a depth-limited Minimax algorithm with Alpha-Beta pruning, enhanced by domain-specific heuristics to capture the underlying structure of the game. It prioritizes moves through intelligent ordering—favoring immediate box completions, then safe moves that avoid conceding opportunities, and finally risky moves—thereby improving pruning efficiency and effective search depth. The evaluation function combines score differential with a structural analysis of the board, notably incorporating chain detection via DFS to identify and penalize large connected regions of vulnerable boxes, reflecting the strategic importance of controlling chains rather than opening them prematurely. Additionally, the bot explicitly models extra turns resulting from box completions, enabling it to reason about multi-step capture sequences and maintain sustained tactical pressure. Overall, the approach balances short-term gains with long-term positional safety, producing a competitive and strategically coherent agent. 
 
 ## Files
 main.c — game loop and mode selection
