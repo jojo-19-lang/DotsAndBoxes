@@ -1,26 +1,30 @@
-CC = gcc
-CFLAGS = -Wall -Werror -g -c
-LFLAGS = -o
+CC     = gcc
+CFLAGS = -Wall -Werror -g
+LFLAGS = -pthread
 
-SOURCES = main.c logic.c display.c input.c bot.c
-OBJECTS = $(SOURCES:.c=.o)
-OUTPUT = dots_and_boxes
+COMMON_OBJ = logic.o display.o input.o
 
-all: $(OUTPUT)
+all: dots_and_boxes server client
 
-$(OUTPUT): $(OBJECTS)
-	$(CC) $(LFLAGS) $@ $^
+dots_and_boxes: main.o bot.o $(COMMON_OBJ)
+	$(CC) $(LFLAGS) -o $@ $^
+
+server: server.o bot.o $(COMMON_OBJ)
+	$(CC) $(LFLAGS) -o $@ $^
+
+client: client.o $(COMMON_OBJ)
+	$(CC) $(LFLAGS) -o $@ $^
 
 %.o: %.c game.h
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
-run: $(OUTPUT)
-	./$(OUTPUT)
+run: dots_and_boxes
+	./dots_and_boxes
 
-valgrind: $(OUTPUT)
-	valgrind --leak-check=full --track-origins=yes ./$(OUTPUT)
+valgrind: dots_and_boxes
+	valgrind --leak-check=full --track-origins=yes ./dots_and_boxes
 
 clean:
-	rm -f $(OBJECTS) $(OUTPUT)
+	rm -f *.o dots_and_boxes server client
 
-.PHONY: all clean valgrind run
+.PHONY: all run valgrind clean

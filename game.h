@@ -9,7 +9,8 @@
 
 typedef enum {
     MODE_TWO_PLAYER = 0,
-    MODE_BOT        = 1
+    MODE_BOT        =1,
+    MODE_NETWORK    = 2
 } GameMode;
 
 typedef struct {
