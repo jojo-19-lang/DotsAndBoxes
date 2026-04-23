@@ -26,15 +26,15 @@ The player with the most boxes at the end wins.
 
 ## Bot Strategy (Sprint 2)
 This bot implements a strategically informed AI for Dots and Boxes using a depth-limited Minimax algorithm with Alpha-Beta pruning, enhanced by domain-specific heuristics to capture the underlying structure of the game. It prioritizes moves through intelligent ordering,favoring immediate box completions, then safe moves that avoid conceding opportunities, and finally risky moves,thereby improving pruning efficiency and effective search depth. The evaluation function combines score differential with a structural analysis of the board, notably incorporating chain detection via DFS to identify and penalize large connected regions of vulnerable boxes, reflecting the strategic importance of controlling chains rather than opening them prematurely. Additionally, the bot explicitly models extra turns resulting from box completions, enabling it to reason about multi-step capture sequences and maintain sustained tactical pressure. Overall, the approach balances short-term gains with long-term positional safety, producing a competitive and strategically coherent agent.
-##Sprint 3 – Networking
-The game was extended with:
 
+## Sprint 3 – Networking
+The game was extended with:
 TCP client/server communication
 Separate client.c and server.c modules
 Turn synchronization over network
 Mutex-protected shared logic for thread safety
-
 This allows two players to play remotely in real time.
+
 ## Files
 main.c — game loop and mode selection
 logic.c — rules and move validation
