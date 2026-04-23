@@ -12,11 +12,11 @@ Run `make` to compile the program.
 Execute `./dots_and_boxes` to start the game.
 
 ## Game Modes
-1.Two-player mode (Sprint 1): Player A vs Player B
-2.Bot mode (Sprint 2): Player vs Hard-level Bot
-3.Network Mode (Sprint 3):
-a.Client/server multiplayer over TCP sockets
-b.Allows two players on separate machines
+1.Two-player mode (Sprint 1): Player A vs Player B  
+2.Bot mode (Sprint 2): Player vs Hard-level Bot  
+3.Network Mode (Sprint 3):  
+a.Client/server multiplayer over TCP sockets  
+b.Allows two players on separate machines  
 ## How to play
 Players enter moves as: row1 col1 row2 col2
 Example: `0 0 0 1` draws the top edge of the top-left box.
