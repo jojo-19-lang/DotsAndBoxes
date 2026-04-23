@@ -37,12 +37,21 @@ This allows two players to play remotely in real time.
 
 ## Files
 main.c — game loop and mode selection
+
 logic.c — rules and move validation
+
 display.c — board rendering
+
 input.c — player input
+
 bot.c — bot logic and decision making
+
 server.c — server-side networking (Sprint 3)
+
 client.c — client-side networking (Sprint 3)
+
 game.h — shared structures and declarations
+
 bot.h — bot-related declarations
+
 Makefile — build system
