@@ -5,3 +5,5 @@ dots_and_boxes
 project.zip
 *.swp
 *.save
+client
+server
