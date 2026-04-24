@@ -89,9 +89,8 @@ static void *client_thread(void *arg)
             int my_turn   = (gs.currentPlayer == me);
             int game_done = isGameOver(&gs);
             pthread_mutex_unlock(&game_lock);
-            if (my_turn || game_done) break;
-            send_msg(fd, "WAIT");
-            usleep(300000);
+        	if (my_turn || game_done) break;
+		usleep(300000);
         }
 
         pthread_mutex_lock(&game_lock);
