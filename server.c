@@ -21,7 +21,7 @@ static void send_msg(int fd, const char *msg)
 {
     char buf[BUF_SIZE * 8];
     int  len = snprintf(buf, sizeof(buf), "%s\n", msg);
-    send(fd, buf, len, 0);
+	write(fd, buf, len);
 }
 
 static void serialise(const GameState *g, char *buf, int maxlen)
@@ -109,8 +109,7 @@ static void *client_thread(void *arg)
         send_board(fd);
         send_msg(fd, "YOUR_TURN");
         pthread_mutex_unlock(&game_lock);
-
-        int got = recv(fd, recvbuf, sizeof(recvbuf) - 1, 0);
+        int got = read(fd, recvbuf, sizeof(recvbuf) - 1);
         if (got <= 0) {
             printf("[Server] Player %c disconnected.\n", me);
             break;
@@ -157,12 +156,10 @@ int main(void)
 {
     int server_fd;
     struct sockaddr_in server_addr;
-    int opt = 1;
 
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if (server_fd < 0) { perror("socket"); return 1; }
 
-    setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
 
     memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family      = AF_INET;
@@ -192,9 +189,8 @@ int main(void)
         client_fd[i] = accept(server_fd,
                               (struct sockaddr *)&caddr, &clen);
         if (client_fd[i] < 0) { perror("accept"); return 1; }
-        printf("[Server] Player %c connected from %s\n",
-               (i == 0) ? 'A' : 'B',
-               inet_ntoa(caddr.sin_addr));
+         printf("[Server] Player %c connected.\n",
+       (i == 0) ? 'A' : 'B');
     }
 
     pthread_t threads[2];
